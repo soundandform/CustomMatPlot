@@ -393,9 +393,9 @@ void GraphLineList::setLimitsForVerticalOrHorizontalLines(const Lim<ValueType>& 
 
   for (auto& graph_line : getGraphLinesOfType<t_graph_line_type>()) {
     if constexpr (t_graph_line_type == GraphLineType::vertical)
-      graph_line->setYValues({x_or_y_limit.min, x_or_y_limit.max});
+      graph_line->setYValues({(float) x_or_y_limit.min, (float) x_or_y_limit.max});
     else if constexpr (t_graph_line_type == GraphLineType::horizontal)
-      graph_line->setXValues({x_or_y_limit.min, x_or_y_limit.max});
+      graph_line->setXValues({(float) x_or_y_limit.min, (float) x_or_y_limit.max});
   }
 }
 

@@ -325,6 +325,21 @@ template <class ValueType>
     }
   }
 
+	if (value_text_out.find ('.') != std::string::npos)
+	{
+		while (value_text_out.size ())
+		{
+			if (value_text_out.back () == '0')
+				value_text_out.pop_back ();
+			else
+			{
+				if (value_text_out.back () == '.')
+					value_text_out.pop_back ();
+				break;
+			}
+		}
+	}
+	
   return {value_text_out, factor_text};
 }
 

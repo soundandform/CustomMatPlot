@@ -402,8 +402,9 @@ void PlotLookAndFeel::drawGridLine(juce::Graphics& g, const GridLine& grid_line,
   switch (grid_line.direction) {
     case GridLine::Direction::vertical:
       if (grid_type > GridType::none) {
-        g.drawVerticalLine(int(grid_line.position.getX()),
-                           float(grid_line.position.getY()), y_and_len);
+		  g.drawLine (grid_line.position.getX (), grid_line.position.getY(), grid_line.position.getX (), y_and_len, .5);
+					
+//        g.drawVerticalLine(int(grid_line.position.getX()), float(grid_line.position.getY()), y_and_len);
       } else {
         g.drawVerticalLine(int(grid_line.position.getX()),
                            float(grid_line.position.getY()),
@@ -415,8 +416,8 @@ void PlotLookAndFeel::drawGridLine(juce::Graphics& g, const GridLine& grid_line,
       break;
     case GridLine::Direction::horizontal:
       if (grid_type > GridType::none) {
-        g.drawHorizontalLine(int(grid_line.position.getY()),
-                             float(grid_line.position.getX()), x_and_len);
+		  g.drawLine (grid_line.position.getX (), grid_line.position.getY(), x_and_len, grid_line.position.getY(), .5);
+//        g.drawHorizontalLine(int(grid_line.position.getY()),  float(grid_line.position.getX()), x_and_len);
       } else {
         g.drawHorizontalLine(int(grid_line.position.getY()),
                              float(grid_line.position.getX()),
