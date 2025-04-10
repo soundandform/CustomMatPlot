@@ -310,11 +310,18 @@ void PlotLookAndFeel::drawGraphLine(juce::Graphics& g,
   auto graph_colour = graph_line_data.graph_attribute.graph_colour.value();
 
   if (graph_points.size() > 1) {
-    graph_path.startNewSubPath(graph_points[0]);
-    std::for_each(
-        graph_points.begin() + 1, graph_points.end(),
-        [&](const juce::Point<float>& point) { graph_path.lineTo(point); });
-
+	  
+	  if (graph_points [0].isFinite ())
+	  {
+		  graph_path.startNewSubPath(graph_points[0]);
+		  std::for_each(
+						graph_points.begin() + 1, graph_points.end(),
+						[&](const juce::Point<float>& point)
+						{
+							if (point.isFinite())
+								graph_path.lineTo(point);
+						});
+	  }
     if (dashed_lengths) {
       stroke_type.createDashedStroke(graph_path, graph_path,
                                      dashed_lengths.value().data(),
